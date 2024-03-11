@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port 8080 for the server
-EXPOSE 8080
+EXPOSE 5000
 
 # Define environment variable
 ENV NAME BytehrContainer
