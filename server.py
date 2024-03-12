@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 # Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')  # Connect to MongoDB running on localhost
+client = MongoClient('mongodb://mongo:27017/')  # Connect to MongoDB service named 'mongo' within Docker network
 db = client['bytehr_database']  # Connect to 'bytehr_database' database
 collection = db['data_collection']  # Access 'data_collection' collection within the database
 
@@ -62,4 +62,4 @@ def delete_data(data_id):
         return jsonify({"error": "Data not found"}), 404  # Return error if data not found
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Run Flask app in debug mode
+    app.run(debug=True, host='0.0.0.0')  # Run Flask app in debug mode, listen on all interfaces
